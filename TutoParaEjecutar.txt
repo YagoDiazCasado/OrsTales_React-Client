@@ -1,0 +1,12 @@
+
+//Instalar ngrok
+npm install -g ngrok
+
+//Inicaia tu app
+npm start
+
+//La expones con ngrok
+ngrok http 3000
+
+//Ngrok conectará la ip local  a un dominio random. Ese es el que se pasa publico.
+//Si nos registramos en ngrok podemos hacer una url estática que no cambie. Chiquilín

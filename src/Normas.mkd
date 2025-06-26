@@ -1,0 +1,129 @@
+# 🧱 Arquitectura JavaScript del Cliente (RPG ORS)
+
+## ✅ Normas internas
+
+- 🔄 **Todas las funciones de servicio son `async`.**
+- 🌐 **Todos los servicios utilizan `fetch` para comunicarse con la API.**
+- 🧠 **Los objetos tipo `Central` son `export const` y conservan estado del cliente.**
+- ♻️ **Todo se organiza en objetos `singleton` exportados.**
+
+---
+
+## 📦 Arquitectura por capas
+
+---
+
+### 📁 Servicios (`/service`)
+
+> Singleton de funciones `async` que acceden a la API con `fetch`.
+
+```js
+const API_URL = "http://localhost:8080/api/pj";
+
+export const PjService = {
+  async getAll() {
+    const res = await fetch(`${API_URL}`);
+    return await res.json();
+  },
+
+  async create(pj) {
+    const res = await fetch(`${API_URL}/create`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(pj)
+    });
+    return await res.json();
+  }
+};
+```
+
+---
+
+### 🔧 Utilidades (`/utilities`)
+
+> Igual que los servicios, pero para lógica del cliente o ayuda general.
+
+```js
+export const PjUtilities = {
+  diceLobby(pj, type) {
+    const stat = pj[type];
+    if (stat <= 5) return 2;
+    if (stat <= 15) return 4;
+    if (stat <= 25) return 6;
+    if (stat <= 30) return 8;
+    if (stat <= 45) return 10;
+    if (stat <= 55) return 12;
+    if (stat <= 65) return 16;
+    if (stat <= 75) return 18;
+    return 20;
+  }
+};
+```
+
+---
+
+### 📜 Enums (`/enums`)
+
+> Singleton de constantes congeladas (inmutables).
+
+```js
+export const BasicHitter = Object.freeze({
+  FISTS: "FISTS",
+  LEGS: "LEGS",
+  ELBOWS: "ELBOWS",
+  KNEES: "KNEES",
+  FINGERS: "FINGERS",
+  BLADEHANDS: "BLADEHANDS"
+});
+```
+
+---
+
+### 🧠 Núcleo (`/core`)
+
+> Objeto vivo centralizado que mantiene el estado compartido del cliente.
+
+```js
+export const Central = {
+  apiUrl: "http://localhost:8080/api",
+  currentAdventure: null,
+  userRole: "player",
+  dado: {
+    nextInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+  }
+};
+```
+
+---
+
+### 📂 Entidades / Modelos (`/models`)
+
+> Clases exportadas por defecto con métodos asociados.
+
+```js
+export default class PJ {
+  constructor({ name, str, dex, end, hp, maxHp }) {
+    this.name = name;
+    this.str = str;
+    this.dex = dex;
+    this.end = end;
+    this.hp = hp;
+    this.maxHp = maxHp;
+  }
+
+  isAlive() {
+    return this.hp > 0;
+  }
+
+  heal(amount) {
+    this.hp = Math.min(this.hp + amount, this.maxHp);
+  }
+}
+```
+
+---
+
+📌 **Nota:** Todas estas clases deben vivir en carpetas claras según su categoría:  
+`/service`, `/utilities`, `/core`, `/enums`, `/models`.
