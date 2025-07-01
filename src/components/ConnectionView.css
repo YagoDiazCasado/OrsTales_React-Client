@@ -1,0 +1,128 @@
+.connection-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10vh 2vw 2vh;
+  min-height: 100vh;
+
+  backdrop-filter: blur(30px); /* Difumina el fondo detrás */
+  -webkit-backdrop-filter: blur(20px); /* Para Safari */
+  
+  border-radius: 1.5rem;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+
+  font-family: 'Impact', sans-serif;
+  color: white;
+  transition: backdrop-filter 0.3s ease;
+}
+
+.spinner {
+  margin-top: 1rem;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  border-top: 6px solid #0091ff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+  align-self: center;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.connection-container.no-blur {
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+    background-color: #222;
+  transition: backdrop-filter 0.5s ease;
+  opacity: 0.2;
+}
+
+
+.title {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  color: #fff9f9;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  opacity: 1;
+  transition: transform 0.3s ease, color 0.3s ease;
+  text-shadow: 0 0 25px rgba(0, 0, 0, 1.2);
+}
+
+.title:hover {
+  transform: scale(2.05);
+  color: #f9fdff;
+  font-weight: bold;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90%;
+  max-width: 420px;
+  background-color: white;
+  color: black;
+  padding: 2rem;
+  border-radius: 1rem;
+  opacity: 0.9;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 1.2);
+}
+
+.input {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.8rem;
+  border: none;
+  background-color: #f1f1f1;
+  color: #222;
+  outline: none;
+  font-family: 'Impact', sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.input::placeholder {
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.input:hover::placeholder {
+  color: transparent;
+}
+
+.input:hover {
+  font-weight: bold;
+  color: #0091ff;
+  box-shadow: 0 0 10px rgba(0, 145, 255, 0.4);
+}
+
+.button {
+  padding: 0.9rem 1.2rem;
+  background-color: white;
+  color: #333;
+  border: none;
+  border-radius: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Impact', sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.button:hover {
+  background-color: #e0f0ff;
+  color: #0091ff;
+  text-shadow: 0 0 8px #0091ff;
+  transform: scale(1.03);
+}
+
+.error {
+  color: #d93025;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 1rem;
+}

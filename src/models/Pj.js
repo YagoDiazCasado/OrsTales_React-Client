@@ -102,6 +102,34 @@ export class PJ {
     this.vaste_Distance = vaste_Distance;
   }
 
+   static fromValues(
+    name,
+    race,
+    characterType,
+    adventureName,
+    power,
+    atl,
+    str,
+    end,
+    min,
+    dex,
+    glimmers
+  ) {
+    return new PJ({
+      name,
+      race,
+      characterType,
+      adventureName,
+      atl,
+      str,
+      power,
+      end,
+      min,
+      dex,
+      glimmers
+    });
+  }
+
   getAllMods() {
     return [this.modA, this.modS, this.modE, this.modM, this.modD];
   }
@@ -119,6 +147,10 @@ XP: A=${this.xpA}, S=${this.xpS}, E=${this.xpE}, M=${this.xpM}, D=${this.xpD}
 Inspiración: ${this.inspirationPoints} | Habilidad: ${this.able ? "Sí" : "No"}
 -----------------------------------------
     `.trim();
+  }
+
+   toString() {
+    return this.name;
   }
 
   equals(otherPJ) {

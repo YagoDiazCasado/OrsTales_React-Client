@@ -1,9 +1,9 @@
-import Central from './utilities/Central';
+import Central from '../core/Central';
 
 const API_BASE_URL = `${Central.API}/api/adventures`;
 
 export const AdventureService = {
-  // Obtener todas las aventuras
+ 
   async getAll() {
     const response = await fetch(API_BASE_URL, {
       method: 'GET',
@@ -13,13 +13,13 @@ export const AdventureService = {
     console.log(body);
 
     if (response.ok) {
-      return JSON.parse(body); // Devuelve lista de aventuras
+      return JSON.parse(body); 
     }
 
     throw new Error(`Error al obtener aventuras: ${body}`);
   },
 
-  // Obtener aventura por ID
+
   async getById(id) {
     const encodedId = encodeURIComponent(id);
     const response = await fetch(`${API_BASE_URL}/${encodedId}`, {
@@ -37,7 +37,7 @@ export const AdventureService = {
     throw new Error(`Error al obtener aventura: ${body}`);
   },
 
-  // Crear nueva aventura
+
   async create(adventure) {
     const response = await fetch(API_BASE_URL, {
       method: 'POST',
@@ -53,7 +53,7 @@ export const AdventureService = {
     }
   },
 
-  // Actualizar aventura existente
+
   async update(adventure) {
     const response = await fetch(API_BASE_URL, {
       method: 'PUT',
@@ -69,7 +69,7 @@ export const AdventureService = {
     }
   },
 
-  // Eliminar aventura
+
   async delete(adventure) {
     const response = await fetch(API_BASE_URL, {
       method: 'DELETE',
