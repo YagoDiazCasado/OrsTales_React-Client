@@ -32,7 +32,7 @@ export default function ConnectionView() {
       Central.adventureList = lista;
       console.log('Aventuras cargadas:', lista);
       setError(null);
-      Central.setView("lobby"); 
+      Central.setView("adventures"); 
     } catch (e) {
       console.error('Error al conectar:', e);
       setError(e.message);

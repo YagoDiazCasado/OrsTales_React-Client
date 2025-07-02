@@ -1,8 +1,8 @@
 // services/pjService.js
-import Central from './utilities/Central';
+import Central from '../core/Central';
 const API_BASE_URL = Central.API + "/api/pj";
 
-export const pjService = {
+export const PjService = {
   async postJson(url, body) {
     const res = await fetch(url, {
       method: "POST",

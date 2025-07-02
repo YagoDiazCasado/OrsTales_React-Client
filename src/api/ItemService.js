@@ -1,5 +1,5 @@
 
-import  {Central} from './utils/Central';
+import  {Central} from '../core/Central';
 const API_BASE_URL = Central.API + "/api/pj";
 
 export const ItemService = {

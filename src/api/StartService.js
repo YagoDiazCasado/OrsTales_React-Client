@@ -1,5 +1,5 @@
 
-import Central from './utilities/Central';
+import Central from '../core/Central';
 const API_BASE_URL = Central.API + "/api/start";
 
 export const StartService = {

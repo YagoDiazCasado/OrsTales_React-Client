@@ -12,6 +12,53 @@ body {
     position: relative;
   z-index: 1;
 }
+.hot-bar {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+
+  background: rgba(20, 20, 20, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 12px 24px;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+
+  transition: all 0.3s ease-in-out;
+}
+
+.hot-bar button {
+  background-color: white;
+  color: #222;
+  border: none;
+  padding: 0.9rem 1.2rem;
+  border-radius: 1rem;
+  
+  font-family: 'Impact', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.hot-bar button:hover {
+  background-color: #e0f0ff;
+  color: #0091ff;
+  text-shadow: 0 0 8px #0091ff;
+  transform: scale(1.05);
+}
+
+.hot-bar button:active {
+  transform: scale(0.95);
+  background-color: #cce8ff;
+  box-shadow: 0 0 8px rgba(0,145,255,0.4);
+}
+
+
 
 .app-container::before {
   content: '';
